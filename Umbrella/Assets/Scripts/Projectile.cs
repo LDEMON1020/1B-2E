@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public int damage = 1;
     public float speed = 20f;
     public float lifeTime = 2f;
     // Start is called before the first frame update
@@ -20,10 +21,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (other.CompareTag("Enemy"))
         {
             Destroy(gameObject);
-            Destroy(other.gameObject);
+            enemy.TakeDamage(damage);
         }
     }
 }

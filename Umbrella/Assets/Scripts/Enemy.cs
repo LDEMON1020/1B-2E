@@ -7,11 +7,12 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 2f;
     private Transform player;
 
-    public float HP = 5;
+    public int HP = 5;
+    public int CurrentHP;
     // Start is called before the first frame update
     void Start()
     {
-        HP = 5;
+        CurrentHP = HP;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -23,8 +24,12 @@ public class Enemy : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
         transform.position += direction * moveSpeed * Time.deltaTime;
         transform.LookAt(player.position);
+    }
 
-        if (HP <= 0)
+    public void TakeDamage(int damage)
+    {
+        CurrentHP -= damage;
+        if (CurrentHP <= 0)
         {
             Destroy(gameObject);
         }
