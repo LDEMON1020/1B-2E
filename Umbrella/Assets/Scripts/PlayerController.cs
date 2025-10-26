@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public CinemachineSwitcher cs;
 
     public int maxHP = 100;
-    private int currentHP;
+    public int currentHP;
 
     public Slider hpSlider;
     // Start is called before the first frame update
