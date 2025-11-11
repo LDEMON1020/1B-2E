@@ -58,11 +58,22 @@ public class NoiseVoxelMap : MonoBehaviour
     {
         var go = Instantiate(blockPrefab[0], new Vector3(x, y, z), Quaternion.identity, transform);
         go.name = $"A_{x}_{y}_{z}";
+
+        var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
+        b.type = BlockType.Grass;
+        b.maxHP = 1;
+        b.dropCount = 1;
+        b.mineable = true;
     }
     private void Place2(int x, int y, int z)
     {
         var go = Instantiate(blockPrefab[1], new Vector3(x, y, z), Quaternion.identity, transform);
         go.name = $"B_{x}_{y}_{z}";
+        var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
+        b.type = BlockType.Dirt;
+        b.maxHP = 3;
+        b.dropCount = 1;
+        b.mineable = true;
     }
     private void Place3(int x, int y, int z)
     {
