@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public Dictionary<BlockType, int> items = new();
-    public GameObject[] InventorySlot;
+    public SlotItemPrefab SIP;
     // Start is called before the first frame update
     
 

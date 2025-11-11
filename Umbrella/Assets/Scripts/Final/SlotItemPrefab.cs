@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SlotItemPrefab : MonoBehaviour
 {
+    public Inventory inventory;
     public Image itemImage;
     public Text itemText;
     // Start is called before the first frame update
@@ -15,5 +16,9 @@ public class SlotItemPrefab : MonoBehaviour
     {
         itemImage.sprite = itemSprite;
         itemText.text = txt;
+        if(inventory.items == null)
+        {
+            itemText.text = "";
+        }
     }
 }
