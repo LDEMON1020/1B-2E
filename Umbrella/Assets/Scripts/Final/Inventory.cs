@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour
     public Sprite GrassSprite;
     public Sprite WaterSprite;
     // Start is called before the first frame update
-
     private void Start()
     {
         // UI 연결 안 되어 있으면 자동으로 찾기 (선택)

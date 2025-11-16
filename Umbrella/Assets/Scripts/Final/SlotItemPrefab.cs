@@ -9,6 +9,11 @@ public class SlotItemPrefab : MonoBehaviour
 
     public void ItemSetting(Sprite itemSprite, string txt)
     {
+        if (itemImage == null)
+            Debug.LogError("ItemImage is null!");
+        else
+            itemImage.sprite = itemSprite;
+
         itemImage.sprite = itemSprite;
         itemText.text = txt;
     }
