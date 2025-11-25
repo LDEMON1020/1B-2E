@@ -38,23 +38,23 @@ public class NoiseVoxelMap : MonoBehaviour
                 {
                     if (y == h)
                     {
-                        Place1(x, y, z);
+                        PlaceGrass(x, y, z);
                     }
                     else
                     {
-                        Place2(x, y, z);
+                        PlaceDirt(x, y, z);
                     }
                 }
 
                 for (int y = h+1;y<=Water;y++)
                 {
-                    Place3(x, y, z);
+                    PlaceWater(x, y, z);
                 }
             }
         }
     }
 
-   private void Place1(int x,int y, int z)
+   private void PlaceGrass(int x,int y, int z)
     {
         var go = Instantiate(blockPrefab[0], new Vector3(x, y, z), Quaternion.identity, transform);
         go.name = $"A_{x}_{y}_{z}";
@@ -65,7 +65,7 @@ public class NoiseVoxelMap : MonoBehaviour
         b.dropCount = 1;
         b.mineable = true;
     }
-    private void Place2(int x, int y, int z)
+    private void PlaceDirt(int x, int y, int z)
     {
         var go = Instantiate(blockPrefab[1], new Vector3(x, y, z), Quaternion.identity, transform);
         go.name = $"B_{x}_{y}_{z}";
@@ -75,9 +75,25 @@ public class NoiseVoxelMap : MonoBehaviour
         b.dropCount = 1;
         b.mineable = true;
     }
-    private void Place3(int x, int y, int z)
+    private void PlaceWater(int x, int y, int z)
     {
         var go = Instantiate(blockPrefab[2], new Vector3(x, y, z), Quaternion.identity, transform);
         go.name = $"B_{x}_{y}_{z}";
+    }
+
+    public void PlaceTile(Vector3Int pos, BlockType type)
+    {
+        switch(type)
+        {
+            case BlockType.Grass:
+                PlaceGrass(pos.x, pos.y, pos.z);
+                break;
+            case BlockType.Dirt:
+                PlaceDirt(pos.x, pos.y, pos.z);
+                break;
+            case BlockType.Water:
+                PlaceWater(pos.x, pos.y, pos.z);
+                break;
+        }
     }
 }

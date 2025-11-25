@@ -30,7 +30,10 @@ public class Block : MonoBehaviour
         if(hp<=0)
         {
             if (inven != null && dropCount > 0)
+            {
                 inven.Add(type, dropCount);
+            }
+                
 
             Destroy(gameObject);
         }

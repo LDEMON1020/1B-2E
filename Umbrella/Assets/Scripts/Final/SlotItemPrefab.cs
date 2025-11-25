@@ -5,16 +5,13 @@ public class SlotItemPrefab : MonoBehaviour
 {
     public Image itemImage;
     public Text itemText;
+    public BlockType blockType;
     // Start is called before the first frame update
 
-    public void ItemSetting(Sprite itemSprite, string txt)
+    public void ItemSetting(Sprite itemSprite, string txt, BlockType type)
     {
-        if (itemImage == null)
-            Debug.LogError("ItemImage is null!");
-        else
-            itemImage.sprite = itemSprite;
-
         itemImage.sprite = itemSprite;
         itemText.text = txt;
+        blockType = type;
     }
 }
